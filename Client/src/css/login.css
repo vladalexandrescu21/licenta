@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family:"CustomFont"; 
+}
+
+
+.page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover{
+    background-color: white;
+    width: 30em;
+    height: 41em;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 0.188em 1.550em rgb(100, 156, 156);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 50px auto 0 auto;
+}
+
+
+
+input{
+    border: none;
+    background-color: rgb(229, 226, 226);
+    height: 4em;
+    width: 80%;
+    border-radius: 0.25em;
+    text-align: center;
+    padding: 2em;
+    margin-bottom: 0.7em;
+}
+
+input:focus{
+    outline-color: rgb(32, 177, 255);
+}
+
+
+.bugDivM{
+    display: flex;
+    justify-content: center;
+    min-height: 200px;
+    column-gap: 3%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+
+.loginBtn{
+    width: 40%;
+    height: 3em;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+.createAccountBtn{
+    width: 40%;
+    height: 3em;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+.cancelBtn{
+    width: 40%;
+    height: 3em;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+.registerBtn{
+    width: 40%;
+    height: 3em;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+
+.loginBtn:hover{
+    transform: scale(1.15);
+}
+
+.bugDiv:hover{
+    transform: scale(1.15);
+}
+
+.addBugBtn:hover{
+    transform: scale(1.15);
+}
+
+.registerBtn:hover{
+    transform: scale(1.15);
+}
+
+.text{
+    position: relative;
+    bottom: -2em;
+}
+
+.hide{
+    position: absolute;
+    transform: scale(0);
+}
+
+.login-popout{
+    position: absolute;
+    height: 30em;
+    width: 30em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25em;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    transform: scale(1);
+    transition: 1.5s;
+}
