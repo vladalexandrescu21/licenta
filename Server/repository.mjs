@@ -130,13 +130,13 @@ const Concediu = sequelize.define("concedii", {
     autoIncrement: true,
     primaryKey: true,
   },
-  startDate: {
+  data_initiala: {
     type: DataTypes.DATEONLY,
-    allowNull: false,
+    allowNull: true,
   },
-  endDate: {
+  data_finala: {
     type: DataTypes.DATEONLY,
-    allowNull: false,
+    allowNull: true,
   }
 },
 {timestamps: false,
@@ -147,6 +147,10 @@ const Cerere = sequelize.define("cereri", {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
+  },
+  pdf:{
+    type: DataTypes.BLOB,
+    allowNull: false,
   },
   status: {
     type: DataTypes.STRING,
@@ -162,6 +166,14 @@ const Cerere = sequelize.define("cereri", {
       min: 3,
       max: 200
     }
+  },
+  data_initiala: {
+    type: DataTypes.DATEONLY,
+    allowNull: true,
+  },
+  data_finala: {
+    type: DataTypes.DATEONLY,
+    allowNull: true,
   },
 },
 {timestamps: false,

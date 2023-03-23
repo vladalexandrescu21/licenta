@@ -18,7 +18,10 @@ export const Login = () => {
       body: JSON.stringify(item)
     });
     if(result.status === 201){
-      alert("Login successful");
+      //alert("Login successful");
+      result.json().then(data => localStorage.setItem("user", JSON.stringify(data)));
+      navigate("/paginaAngajat", { replace: true });
+      //navigate("/calendar", { replace: true });
   }
   else{
       showPopup("show");

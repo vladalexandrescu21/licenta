@@ -100,11 +100,6 @@ export const Register = () => {
         <div className="registerBtn" onClick={registerBtn}>
           Inregistrare
         </div>
-        <div className="registerBtn" onClick={() => {
-          navigate(-1)
-        }}>
-          Inapoi
-        </div>
       </form>
     </div>
   );

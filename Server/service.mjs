@@ -5,7 +5,7 @@ async function checkLogin(Model, request, response) {
         if (user) {
             const validPassword = await bcrypt.compare(request.body.password, user.password);
             if (validPassword) {
-                response.status(201).send();
+                response.status(201).send(user);
             } else {
                 response.status(404).send({ message: "Password is incorrect" });
             }
@@ -58,4 +58,18 @@ async function registerSef(modelUser, modelSef, request, response) {
     response.status(500).json(error);
   }
 }
-export { checkLogin, registerAngajat, registerSef };
+
+async function Dropzone(modelCerere, request, response) {
+  try {
+    let cerere = modelCerere.create({
+      pdf: request.body.pdf,
+      status: request.body.status,
+      observatii: request.body.observatii,
+      userId: request.body.userId
+    });
+    response.status(201).json(cerere);
+  } catch (error) {
+    response.status(500).json(error);
+  }
+}
+export { checkLogin, registerAngajat, registerSef, Dropzone };
