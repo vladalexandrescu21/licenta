@@ -1,0 +1,89 @@
+.form-container {
+  width: 33.33%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+.font-link {
+  font-family: "Roboto Flex", sans-serif;
+}
+.preview {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 210mm; /* latimea unei pagini A4 in milimetri */
+  height: 297mm; /* inaltimea unei pagini A4 in milimetri */
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 50px;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#cerere{
+    width: 80%; /* latimea continutului din pagina */
+  margin: 0 auto; /* centrarea continutului */
+}
+.preview h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.preview p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+#subsemnat {
+  margin-top: 50px;
+  text-align: justify;
+}
+
+#zile {
+  margin-bottom: 50px;
+}
+
+#date {
+  margin-top: 100px;
+  margin-left: 550px;
+}
+
+#angajat {
+  margin-top: 50px;
+  margin-left: 550px;
+}
+
+#puncte1 {
+  margin-top: 50px;
+  margin-left: 500px;
+}
+
+#sef {
+  margin-top: 50px;
+  margin-left: 550px;
+}
+
+#puncte2 {
+  margin-top: 50px;
+  margin-left: 500px;
+}
+
+.preview-shadow{
+    width: 50%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

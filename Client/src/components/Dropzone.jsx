@@ -1,6 +1,9 @@
 import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useNavigate } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import styles from '../css/dropZone.module.css';
+import Alert from 'react-bootstrap/Alert';
 
 function Dropzone(props) {
   let navigate = useNavigate();
@@ -29,14 +32,16 @@ function Dropzone(props) {
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop, accept: 'application/pdf'})
 
   return (
-    <div {...getRootProps()}>
+    <Container id='container' className={`${styles["font-link"]} font-link text-center mt-5 w-60 h-100`} {...getRootProps()}>
+    {/* <div {...getRootProps()}> */}
       <input {...getInputProps()} />
       {
         isDragActive ?
-          <p>Incarcati cererea semnata (se accepta doar fisier pdf):</p> :
-          <p>Incarcati cererea semnata (se accepta doar fisier pdf):</p>
+          <Alert variant="warning" className='w-100 h-100 p-5'> <p>Eliberati click-ul pentru a incarca fisierul</p></Alert> :
+          <Alert variant="success" className='w-100 h-100 p-5'> <p>Trageti fisierul aici sau dati click pentru a selecta un fisier (se accepta doar fisiere pdf)</p></Alert>
       }
-    </div>
+    {/* </div> */}
+    </Container>
   )
 }
 

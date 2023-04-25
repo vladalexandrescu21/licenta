@@ -6,7 +6,12 @@ import {
   Concediu,
   Cerere,
 } from "./repository.mjs";
-import { checkLogin, registerAngajat, registerSef, Dropzone } from "./service.mjs";
+import {
+  checkLogin,
+  registerAngajat,
+  registerSef,
+  Dropzone,
+} from "./service.mjs";
 import express from "express";
 
 const router = express.Router();

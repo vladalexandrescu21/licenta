@@ -1,0 +1,11 @@
+version: '1'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: app_db
+    ports:
+      - '5432:5432'
