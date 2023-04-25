@@ -14,6 +14,8 @@ Functionalitatile implementate pana in prezent:
 
 -in pagina de angajat se poate utiliza butonul de creare cerere pentru a intra pe pagina de generare a cererii de concediu
 
+-zilele de inceput si sfarsit a concediului pot fi selectate dintr-un calendar
+
 -descarcare in PC-ul angajatului a cererii in format PDF pentru a fi semnata
 
 -salvare a PDF-ului in format BLOB in baza de date
@@ -25,5 +27,7 @@ Functionalitati viitoare:
 -posibilitatea pentru un utilizator de tip sef de a vizualiza toate cererile create de angajatii departamentului sau
 
 -utilizatorul de tip sef de departament poate aproba sau respinge cereriile de concediu
+
+-calendarul in care se selectează zilele de inceput si sfarsit ale concediului va avea anumite zile care nu vor putea fi alese (in functie de o logica de ex. daca minim 2 angajati din acelasi departament au concediu intr-o anumita zi, un al treilea angajat nu isi poate lua concediu in ziua respectiva)
 
 -inbunatatirea designului
