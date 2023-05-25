@@ -1,33 +1,33 @@
-Pentru crearea containerului bazei de date postgre in docker rulati fisierul docker-compose.yml din Server/docker/
+To create the postgre database container in docker, run the docker-compose.yml file from Server/docker/
 
-Pentru instalarea modulelor necesare rulati comanda npm i in terminal in folderul server si in folderul client
+To install the necessary modules, run the npm command in the terminal in the server folder and in the client folder
 
-Pentru pornirea serverului de back-end rulati in folderul server in terminal npm run back-start
+To start the back-end server, run npm run back-start in the server folder in the terminal
 
-Pentru pornirea serverului de client rulati in folderul client in terminal npm start
+To start the client server, run npm start in the client folder in the terminal
 
-Functionalitatile implementate pana in prezent:
+Functionalities implemented so far:
 
--login/register cu parola salavata in baza de date cu hashing
+-login/register with the password saved in the database with hashing
 
--paginii principale pentru contul de angajat si contul de sef de departament
+- the main pages for the employee account and the head of department account
 
--in pagina de angajat se poate utiliza butonul de creare cerere pentru a intra pe pagina de generare a cererii de concediu
+- in the employee page, you can use the request creation button to enter the leave request generation page
 
--zilele de inceput si sfarsit a concediului pot fi selectate dintr-un calendar
+- the start and end days of the leave can be selected from a calendar
 
--descarcare in PC-ul angajatului a cererii in format PDF pentru a fi semnata
+- download the application in PDF format to the employee's PC to be signed
 
--salvare a PDF-ului in format BLOB in baza de date
+- saving the PDF in BLOB format in the database
 
-Functionalitati viitoare:
+Future functionalities:
 
--posibilitatea de a vizualiza toate cererile (si statusurile acestora) create de un utilizator de tip angajat
+- the possibility to view all requests (and their statuses) created by an employee type user
 
--posibilitatea pentru un utilizator de tip sef de a vizualiza toate cererile create de angajatii departamentului sau
+- the possibility for a boss user to view all the requests created by the employees of his department
 
--utilizatorul de tip sef de departament poate aproba sau respinge cereriile de concediu
+- the head of department type user can approve or reject leave requests
 
--calendarul in care se selectează zilele de inceput si sfarsit ale concediului va avea anumite zile care nu vor putea fi alese (in functie de o logica de ex. daca minim 2 angajati din acelasi departament au concediu intr-o anumita zi, un al treilea angajat nu isi poate lua concediu in ziua respectiva)
+- the calendar in which the start and end days of leave are selected will have certain days that cannot be chosen (depending on a logic, e.g. if at least 2 employees from the same department have leave on a certain day, a third employee cannot take leave on that day)
 
--inbunatatirea designului
+- improving the design
