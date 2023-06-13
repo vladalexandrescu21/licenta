@@ -25,16 +25,22 @@ export const Register = () => {
     if (!emailInput.value) {
       errorMessage += "Email-ul nu a fost completat.\n";
     }
-    if(!emailInput.value.includes("@")){
+    if (!emailInput.value.includes("@")) {
       errorMessage += "Email-ul nu este valid.\n";
     }
 
-    if(rol !== "angajat" && rol !== "sef"){
+    if (rol !== "angajat" && rol !== "sef") {
       errorMessage += "Rolul nu a fost selectat.\n";
     }
 
     if (!passwordInput.value) {
       errorMessage += "Parola nu a fost completata.\n";
+    } else {
+      const passwordRegex = /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+      if (!passwordRegex.test(passwordInput.value)) {
+        errorMessage +=
+          "Parola trebuie sa aiba minim 8 caractere, minim o cifra si minim o litera mare.\n";
+      }
     }
 
     if (errorMessage) {
@@ -52,37 +58,41 @@ export const Register = () => {
     }
   }
 
+  function inapoi() {
+    navigate("/", { replace: true });
+  }
+
   async function registerBtn() {
     let item = { email, password, rol, id_angajat_sef };
     console.log(item);
     if (showValidationErrors() === true) {
-    if (item.rol === "angajat") {
-      let result = await fetch("http://localhost:8080/api/registerAngajat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(item),
-      });
-      if (result.status === 201) {
-        navigate("/", { replace: true });
+      if (item.rol === "angajat") {
+        let result = await fetch("http://localhost:8080/api/registerAngajat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(item),
+        });
+        if (result.status === 201) {
+          navigate("/", { replace: true });
+        }
+      }
+      if (rol === "sef") {
+        let result = await fetch("http://localhost:8080/api/registerSef", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(item),
+        });
+        if (result.status === 201) {
+          navigate("/", { replace: true });
+        }
       }
     }
-    if (rol === "sef") {
-      let result = await fetch("http://localhost:8080/api/registerSef", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(item),
-      });
-      if (result.status === 201) {
-        navigate("/", { replace: true });
-      }
-    }
-  }
   }
   const onRadioChange = (e) => {
     setRol(e);
@@ -150,8 +160,15 @@ export const Register = () => {
             />
           </FloatingLabel>
         </Form.Group>
-        <Form.Group className="d-flex justify-content-center">
-          <Button onClick={registerBtn}>Inregistrare</Button>
+        <Form.Group
+          className={`${styles["buttons-div"]} d-flex justify-content-center`}
+        >
+          <Button onClick={registerBtn} variant="success">
+            Inregistrare
+          </Button>
+          <Button onClick={inapoi} className="mt-3" variant="primary">
+            Inapoi
+          </Button>
         </Form.Group>
       </Form>
     </div>

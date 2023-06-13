@@ -4,10 +4,12 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { PaginaAngajat } from "./components/PaginaAngajat";
 import { FormularCerere } from "./components/FormularCerere";
+import { IstoricCereriAngajat } from "./components/IstoricCereriAngajat";
+import { PaginaSef } from "./components/PaginaSef";
+import { CereriDepartament } from "./components/CereriDepartament";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DropZone from "./components/Dropzone";
-import {ReactCalendar} from "./components/ReactCalendar";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,8 +19,10 @@ root.render(
       <Route path="/register" element={<Register />} />
       <Route path="/paginaAngajat" element={<PaginaAngajat />} />
       <Route path="/creareCerere" element={<FormularCerere />} />
-      <Route path="/dropZone" element={<DropZone/>}/>
-      <Route path="/calendar" element={<ReactCalendar/>}/>
+      <Route path="/dropZone" element={<DropZone />} />
+      <Route path="/istoricCereri" element={<IstoricCereriAngajat />} />
+      <Route path="/paginaSef" element={<PaginaSef />} />
+      <Route path="/cereriDepartament" element={<CereriDepartament />} />
     </Routes>
   </Router>
 );

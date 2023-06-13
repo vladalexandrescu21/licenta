@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from '../css/login.module.css';
+import styles from "../css/login.module.css";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -22,12 +22,14 @@ export const Login = () => {
       body: JSON.stringify(item),
     });
     if (result.status === 201) {
-      //alert("Login successful");
-      result
-        .json()
-        .then((data) => localStorage.setItem("user", JSON.stringify(data)));
-      navigate("/paginaAngajat", { replace: true });
-      //navigate("/calendar", { replace: true });
+      const data = await result.json();
+      localStorage.setItem("user", JSON.stringify(data));
+      if (data.rol === "angajat") {
+        navigate("/paginaAngajat", { replace: true });
+      }
+      if (data.rol === "sef") {
+        navigate("/paginaSef", { replace: true });
+      }
     } else {
       setShowAlert(true);
       setTimeout(() => {
@@ -58,17 +60,17 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </FloatingLabel>
-        </Form.Group>
-        <Form.Group className="mb-3 d-flex justify-content-center align-items-center">
-        <Button onClick={login} className="me-2">Login</Button>
+      </Form.Group>
+      <Form.Group className="mb-3 d-flex justify-content-center align-items-center">
+        <Button onClick={login} className="me-2">
+          Login
+        </Button>
         <br />
         <Button onClick={register} variant="success" className="me-2">
           Inregistrare
         </Button>
       </Form.Group>
-      <Alert 
-        show={showAlert}
-       variant="danger">
+      <Alert show={showAlert} variant="danger">
         Email sau parola incorecta!
       </Alert>
     </Form>
