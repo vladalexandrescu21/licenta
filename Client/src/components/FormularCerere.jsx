@@ -16,6 +16,9 @@ export const FormularCerere = () => {
   const [nrZileConcediuRamase, setNrZileConcediuRamase] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [concediiDepartament, setConcediiDepartament] = useState([]);
+  const [minEndDate, setMinEndDate] = useState(date);
+  const [isStartDateSelected, setIsStartDateSelected] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
   const [dateFormular, setDateFormular] = useState({
     subsemnatul: "",
     departament: "",
@@ -33,15 +36,16 @@ export const FormularCerere = () => {
     if (date < currentDate) {
       return false;
     }
-
+    const user = JSON.parse(localStorage.getItem("user"));
     const overlappingConcedii = concediiDepartament.filter((concediu) => {
       const start = new Date(concediu.data_initiala);
       start.setHours(start.getHours() - 3); // Scade 3 ore din ora de start
       const end = new Date(concediu.data_finala);
-      return date >= start && date <= end;
+      return date >= start && date <= end && concediu.userId === user.id;
     });
 
-    return overlappingConcedii.length < 2;
+    const hasLeaveOnDate = overlappingConcedii.length > 0;
+    return overlappingConcedii.length < 2 && !hasLeaveOnDate;
   };
 
   async function getAngajatInfo() {
@@ -101,8 +105,15 @@ export const FormularCerere = () => {
   }, [nrZileConcediuRamase, dateFormular]);
   //console.log(concediiDepartament);
 
+  const generatePDFName = () => {
+    const nume_prenume = dateFormular.subsemnatul.split(" ");
+    const formattedDate = new Date().toLocaleDateString().split("/").join("-");
+    return `${nume_prenume}_${formattedDate}.pdf`;
+  };
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
+    documentTitle: generatePDFName(),
   });
   const navigateToDragAndDrop = () => {
     navigate("/dropZone", { replace: true });
@@ -126,21 +137,6 @@ export const FormularCerere = () => {
       }
     }
   }
-  // function getBusinessDaysCount(startDate, endDate) {
-  //   const start = new Date(startDate.getTime());
-  //   const end = new Date(endDate.getTime());
-  //   let count = 0;
-
-  //   while (start <= end) {
-  //     const day = start.getDay();
-  //     if (day !== 0 && day !== 6) {
-  //       count++;
-  //     }
-  //     start.setDate(start.getDate() + 1);
-  //   }
-
-  //   return count;
-  // }
   function getBusinessDaysCount(startDate, endDate) {
     const start = new Date(startDate.getTime());
     const end = new Date(endDate.getTime());
@@ -160,16 +156,23 @@ export const FormularCerere = () => {
   function handleStartDateChange(date) {
     if (isDateAvailable(date)) {
       setStartDate(date);
+      setIsStartDateSelected(true);
       const businessDaysCount = getBusinessDaysCount(date, endDate);
       setDateFormular({
         ...dateFormular,
         nrZile: businessDaysCount.toString(),
         anul: date.getFullYear().toString(),
       });
+      const minEndDate = new Date(date.getTime());
+      minEndDate.setDate(minEndDate.getDate() + 1);
+      setMinEndDate(minEndDate);
+      setEndDate(minEndDate);
     } else {
       setStartDate(null);
       setEndDate(null); // Resetăm și data finală dacă data inițială nu este disponibilă
+      setMinEndDate(null);
     }
+    setIsFormValid(false);
   }
 
   function handleEndDateChange(date) {
@@ -183,6 +186,7 @@ export const FormularCerere = () => {
     } else {
       setEndDate(null);
     }
+    setIsFormValid(!!startDate && !!date);
   }
 
   function formatDate(date) {
@@ -214,8 +218,12 @@ export const FormularCerere = () => {
       setTimeout(() => {
         alertMessage.remove();
       }, 5000);
+      setIsFormValid(false);
       return true;
-    } else return false;
+    } else {
+      setIsFormValid(true);
+      return false;
+    }
   }
   return (
     <div>
@@ -241,9 +249,15 @@ export const FormularCerere = () => {
             handleEndDateChange(date);
           }}
           filterDate={isDateAvailable}
+          minDate={minEndDate}
+          disabled={!isStartDateSelected}
         />
         <div className={`${styles["buttons-div"]}`}>
-          <Button className="m-4" onClick={printDropZone}>
+          <Button
+            className="m-4"
+            onClick={printDropZone}
+            disabled={!isFormValid}
+          >
             Genereaza cererea
           </Button>
           <Button
@@ -273,6 +287,10 @@ export const FormularCerere = () => {
               {formatDate(endDate)}.
             </p>
             <p id={styles["date"]}> Data</p>{" "}
+            <p id={styles["date"]} className="mt-0">
+              {" "}
+              {formatDate(new Date())}
+            </p>
             <p id={styles["angajat"]}>Angajat,</p>
             <p id={styles["puncte1"]}>
               {" "}

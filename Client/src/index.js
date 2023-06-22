@@ -9,6 +9,8 @@ import { PaginaSef } from "./components/PaginaSef";
 import { CereriDepartament } from "./components/CereriDepartament";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DropZone from "./components/Dropzone";
+import DropzoneAprobare from "./components/DropzoneAprobare";
+import DropzoneRespingere from "./components/DropzoneRespingere";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -23,6 +25,8 @@ root.render(
       <Route path="/istoricCereri" element={<IstoricCereriAngajat />} />
       <Route path="/paginaSef" element={<PaginaSef />} />
       <Route path="/cereriDepartament" element={<CereriDepartament />} />
+      <Route path="/dropZoneAprobare" element={<DropzoneAprobare />} />
+      <Route path="/dropZoneRespingere" element={<DropzoneRespingere />} />
     </Routes>
   </Router>
 );

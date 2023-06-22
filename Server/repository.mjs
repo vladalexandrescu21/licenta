@@ -163,6 +163,10 @@ const Cerere = sequelize.define(
       autoIncrement: true,
       primaryKey: true,
     },
+    pdfName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     pdf: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -188,6 +192,10 @@ const Cerere = sequelize.define(
     },
     data_finala: {
       type: DataTypes.DATEONLY,
+      allowNull: true,
+    },
+    nrZile: {
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     departamenteId: {

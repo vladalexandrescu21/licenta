@@ -1,3 +1,5 @@
+IMPORTANT - keys for S3 AWS must be entered manually as AWS does not allow storing them in a public repo
+
 To create the postgre database container in docker, run the docker-compose.yml file from Server/docker/
 
 To install the necessary modules, run the npm command in the terminal in the server folder and in the client folder
@@ -20,8 +22,6 @@ Functionalities implemented so far:
 
 - saving the PDF in BLOB format in the database
 
-Future functionalities:
-
 - the possibility to view all requests (and their statuses) created by an employee type user
 
 - the possibility for a boss user to view all the requests created by the employees of his department
@@ -30,4 +30,10 @@ Future functionalities:
 
 - the calendar in which the start and end days of leave are selected will have certain days that cannot be chosen (depending on a logic, e.g. if at least 2 employees from the same department have leave on a certain day, a third employee cannot take leave on that day)
 
+- when a request is approved or rejected, the employee in question is notified via personal email about the new status of the request (approved or rejected).
+
+Future functionalities:
+
 - improving the design
+
+- implementing a JWT to protect the application's routes and to allow only the user who is logged in to have access to the application's features

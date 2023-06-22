@@ -6,7 +6,7 @@ import { initialize } from "./repository.mjs";
 import routes from "./routes.mjs";
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: true }));
 app.use(
   bodyParser.json({
     limit: "50mb",

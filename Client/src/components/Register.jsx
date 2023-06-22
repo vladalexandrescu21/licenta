@@ -77,6 +77,15 @@ export const Register = () => {
         });
         if (result.status === 201) {
           navigate("/", { replace: true });
+        } else if (result.status === 409) {
+          const alertMessage = document.createElement("div");
+          alertMessage.classList.add("alert", "alert-danger");
+          alertMessage.innerHTML = "Contul exista deja!";
+          const formContainer = document.querySelector("#form-container");
+          formContainer.insertBefore(alertMessage, formContainer.firstChild);
+          setTimeout(() => {
+            alertMessage.remove();
+          }, 5000);
         }
       }
       if (rol === "sef") {
@@ -90,6 +99,15 @@ export const Register = () => {
         });
         if (result.status === 201) {
           navigate("/", { replace: true });
+        } else if (result.status === 409) {
+          const alertMessage = document.createElement("div");
+          alertMessage.classList.add("alert", "alert-danger");
+          alertMessage.innerHTML = "Contul exista deja!";
+          const formContainer = document.querySelector("#form-container");
+          formContainer.insertBefore(alertMessage, formContainer.firstChild);
+          setTimeout(() => {
+            alertMessage.remove();
+          }, 5000);
         }
       }
     }
