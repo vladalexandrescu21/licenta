@@ -103,7 +103,6 @@ export const FormularCerere = () => {
 
     fetchConcediiDepartament();
   }, [nrZileConcediuRamase, dateFormular]);
-  //console.log(concediiDepartament);
 
   const generatePDFName = () => {
     const nume_prenume = dateFormular.subsemnatul.split(" ");

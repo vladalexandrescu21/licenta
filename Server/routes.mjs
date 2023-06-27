@@ -17,6 +17,8 @@ import {
   getConcediiDepartament,
   DropzoneAprobare,
   DropzoneRespingere,
+  getAllConcedii,
+  getAllDepartamente,
 } from "./service.mjs";
 import express from "express";
 
@@ -49,5 +51,11 @@ router.route("/aprobaCerere").post((req, res) => {
 });
 router.route("/respingeCerere").post((req, res) => {
   DropzoneRespingere(Cerere, Concediu, Angajat, User, Sef, req, res);
+});
+router.route("/getAllConcedii").get((req, res) => {
+  getAllConcedii(Concediu, req, res);
+});
+router.route("/getAllDepartamente").get((req, res) => {
+  getAllDepartamente(Departament, req, res);
 });
 export default router;

@@ -16,7 +16,13 @@ export const Register = () => {
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
 
+    const idAngajatValue = idAngajatInput.value.trim();
     let errorMessage = "";
+    // Verificăm dacă idAngajatValue conține doar cifre
+    const idAngajatRegex = /^\d+$/;
+    if (!idAngajatRegex.test(idAngajatValue)) {
+      errorMessage += "ID Angajat/Sef trebuie să conțină doar cifre.\n";
+    }
 
     if (!idAngajatInput.value) {
       errorMessage += "ID Angajat/Sef nu a fost completat.\n";
@@ -36,7 +42,8 @@ export const Register = () => {
     if (!passwordInput.value) {
       errorMessage += "Parola nu a fost completata.\n";
     } else {
-      const passwordRegex = /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+      //const passwordRegex = /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+      const passwordRegex = /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}$/; //permite si caractere speciale
       if (!passwordRegex.test(passwordInput.value)) {
         errorMessage +=
           "Parola trebuie sa aiba minim 8 caractere, minim o cifra si minim o litera mare.\n";

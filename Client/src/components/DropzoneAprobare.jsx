@@ -122,8 +122,8 @@ function DropzoneAprobare(props) {
           />
           <div className={`${styles["instructions"]}`}>
             <p>
-              Trageți fișierul în dreapta sau dați click pentru a selecta un
-              fișier (se acceptă doar fișiere PDF).
+              Trageți fișierul în chenarul din stânga sau dați click pentru a
+              selecta un fișier (se acceptă doar fișiere PDF).
             </p>
           </div>
         </div>

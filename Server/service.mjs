@@ -363,6 +363,34 @@ async function getConcediiDepartament(modelConcediu, request, response) {
   }
 }
 
+async function getAllConcedii(modelConcediu, request, response) {
+  try {
+    let concediu = await modelConcediu.findAll();
+    if (concediu) {
+      response.status(201).send(concediu);
+    } else {
+      response.status(404).send({ message: "Nu exista concediu" });
+    }
+  } catch (error) {
+    console.log(error);
+    response.status(500).json(error);
+  }
+}
+
+async function getAllDepartamente(modelDepartament, request, response) {
+  try {
+    let departamente = await modelDepartament.findAll();
+    if (departamente) {
+      response.status(201).send(departamente);
+    } else {
+      response.status(404).send({ message: "Nu exista departamente" });
+    }
+  } catch (error) {
+    console.log(error);
+    response.status(500).json(error);
+  }
+}
+
 export {
   checkLogin,
   registerAngajat,
@@ -374,4 +402,6 @@ export {
   getConcediiDepartament,
   DropzoneAprobare,
   DropzoneRespingere,
+  getAllConcedii,
+  getAllDepartamente,
 };

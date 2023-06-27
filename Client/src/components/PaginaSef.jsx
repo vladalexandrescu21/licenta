@@ -8,6 +8,9 @@ export const PaginaSef = () => {
     localStorage.removeItem("user");
     navigate("/", { replace: true });
   }
+  function chartsConcedii() {
+    navigate("/chartsConcedii", { replace: true });
+  }
   function cereriDepartament() {
     navigate("/cereriDepartament", { replace: true });
   }
@@ -22,6 +25,9 @@ export const PaginaSef = () => {
         variant="success"
       >
         Vizualizare cereri in asteptare
+      </Button>
+      <Button className="m-1 mt-5" variant="info" onClick={chartsConcedii}>
+        Grafice concedii
       </Button>
       <Button className="m-1 mt-5" onClick={logout} variant="danger">
         Logout

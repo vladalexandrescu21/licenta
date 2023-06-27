@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DropZone from "./components/Dropzone";
 import DropzoneAprobare from "./components/DropzoneAprobare";
 import DropzoneRespingere from "./components/DropzoneRespingere";
+import { ChartsConcedii } from "./components/ChartsConcedii";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -27,6 +28,7 @@ root.render(
       <Route path="/cereriDepartament" element={<CereriDepartament />} />
       <Route path="/dropZoneAprobare" element={<DropzoneAprobare />} />
       <Route path="/dropZoneRespingere" element={<DropzoneRespingere />} />
+      <Route path="/chartsConcedii" element={<ChartsConcedii />} />
     </Routes>
   </Router>
 );
