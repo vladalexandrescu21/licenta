@@ -10,7 +10,7 @@ To start the client server, run npm start in the client folder in the terminal
 
 Functionalities implemented so far:
 
--login/register with the password saved in the database with hashing
+- login/register with the password saved in the database with hashing
 
 - the main pages for the employee account and the head of department account
 
@@ -20,7 +20,7 @@ Functionalities implemented so far:
 
 - download the application in PDF format to the employee's PC to be signed
 
-- saving the PDF in BLOB format in the database
+- saving the PDF in Base63 format in S3 bucket in AWS
 
 - the possibility to view all requests (and their statuses) created by an employee type user
 
