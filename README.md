@@ -20,7 +20,7 @@ Functionalities implemented so far:
 
 - download the application in PDF format to the employee's PC to be signed
 
-- saving the PDF in Base63 format in S3 bucket in AWS
+- saving the PDF in Base64 format in S3 bucket in AWS
 
 - the possibility to view all requests (and their statuses) created by an employee type user
 
